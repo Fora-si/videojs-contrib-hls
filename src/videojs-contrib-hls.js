@@ -324,9 +324,7 @@ class HlsHandler extends Component {
       this.setCurrentTime(this.tech_.currentTime());
     });
     this.on(this.tech_, 'error', function() {
-      if (this.masterPlaylistController_) {
-        this.masterPlaylistController_.pauseLoading();
-      }
+      this.pauseLoading();
     });
 
     this.audioTrackChange_ = () => {
@@ -500,6 +498,15 @@ class HlsHandler extends Component {
    */
   seekable() {
     return this.masterPlaylistController_.seekable();
+  }
+
+  /**
+   * manually pause playlist and segment loading
+   */
+  pauseLoading() {
+    if (this.masterPlaylistController_) {
+      this.masterPlaylistController_.pauseLoading();
+    }
   }
 
   /**
