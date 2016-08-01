@@ -77,6 +77,15 @@ export default class SourceUpdater {
   }
 
   /**
+   * Flush current processing buffer
+   */
+  clearBufferedAudio() {
+    this.queueCallback_(() => {
+      this.sourceBuffer_.clearBufferedAudio();
+    });
+  }
+
+  /**
    * Indicates what TimeRanges are buffered in the managed SourceBuffer.
    *
    * @see http://www.w3.org/TR/media-source/#widl-SourceBuffer-buffered

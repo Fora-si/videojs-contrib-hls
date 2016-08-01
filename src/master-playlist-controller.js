@@ -813,6 +813,17 @@ export class MasterPlaylistController extends videojs.EventTarget {
       this.audioSegmentLoader_.abort();
     }
 
+    this.mainSegmentLoader_.clearBuffer();
+    if (this.audioPlaylistLoader_) {
+      this.audioSegmentLoader_.clearBuffer();
+    }
+
+    // require audio buffer to be flushed
+    this.mainSegmentLoader_.clearBufferedAudio();
+    if (this.audioPlaylistLoader_) {
+      this.audioSegmentLoader_.clearBufferedAudio();
+    }
+
     if (!this.tech_.paused()) {
       this.mainSegmentLoader_.load();
       if (this.audioPlaylistLoader_) {

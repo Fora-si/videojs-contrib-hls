@@ -217,6 +217,13 @@ export default class SegmentLoader extends videojs.EventTarget {
   }
 
   /**
+   * clear buffered audio
+   */
+  clearBufferedAudio() {
+    this.sourceUpdater_.clearBufferedAudio();
+  }
+
+  /**
    * set an error on the segment loader and null out any pending segements
    *
    * @param {Error} error the error to set on the SegmentLoader
